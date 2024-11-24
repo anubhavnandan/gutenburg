@@ -1,0 +1,79 @@
+openapi: 3.0.0
+info:
+  title: Project Gutenberg API
+  version: 1.0.0
+paths:
+  /books:
+    get:
+      summary: Retrieve books
+      parameters:
+        - name: id
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: language
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: mime_type
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: topic
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: author
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: title
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A list of books
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                  books:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                        author:
+                          type: string
+                        genre:
+                          type: string
+                        language:
+                          type: string
+                        subjects:
+                          type: array
+                          items:
+                            type: string
+                        bookshelves:
+                          type: array
+                          items:
+                            type: string
+                        download_links:
+                          type: array
+                          items:
+                            type: string
